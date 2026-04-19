@@ -229,6 +229,3 @@ models/
 
 # Conda
 .conda/
-
-# Environment specific scripts
-conda-init.sh
