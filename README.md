@@ -5,7 +5,6 @@
 The AI Trading Strategies Nanodegree equips learners with the skills to build and optimize AI-based trading models. The program covers key areas like ideation, data preprocessing, model development, backtesting, and optimization. Graduates will differentiate AI trading models, select the right model for specific applications, ingest and prepare data, and backtest models using industry best practices. Additionally, learners will master model optimization and detect model drift to ensure ongoing performance.
 
 - **Level:** Advanced
-- **Estimated time:** 96 hours
 - **Projects:** 5
 - **Courses:** 8
 - **Lessons:** 34
