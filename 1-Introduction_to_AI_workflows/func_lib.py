@@ -4,12 +4,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import requests
+import io
 
 def create_hist_prices(start_date = '2000-01-01', end_date = '2024-05-01'):  
     headers = {"User-Agent": "Mozilla/5.0"}
     response = requests.get('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies', headers=headers)
     # Define the list of tickers
-    sp500_tickers = pd.read_html(response.text)[0]['Symbol'].tolist()
+    sp500_tickers = pd.read_html(io.StringIO(response.text))[0]['Symbol'].tolist()
     
     # Filter out Class B shares that have a '.B' in the ticker name
     sp500_tickers = [ticker for ticker in sp500_tickers if '.B' not in ticker]
