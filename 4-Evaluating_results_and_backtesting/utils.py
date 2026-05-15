@@ -41,7 +41,7 @@ def plot_returns(returns):
 
 
 def print_metrics(returns):
-    # Annualize returns and volatility
+    # Annualized returns and volatility
     annualized_return = returns.mean() * 12
     annualized_vol = returns.std() * np.sqrt(12)
 
