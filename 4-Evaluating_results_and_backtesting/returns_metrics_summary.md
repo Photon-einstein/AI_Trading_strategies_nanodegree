@@ -621,11 +621,10 @@ risk_free_rate = 0.05  # 5% annual
 
 excess_returns = returns - risk_free_rate / tradingdays
 
-# Only use returns below the threshold for downside deviation
-downside_returns = excess_returns.copy()
-downside_returns[downside_returns > 0] = 0
-
-downside_deviation = downside_returns.std() * (tradingdays ** 0.5)
+# Downside deviation: RMS of returns below the threshold (zeros replace positive returns)
+# Uses mean (divides by N) — NOT .std() — because the formula measures deviations from
+# the threshold (0), not from the mean of the negative returns.
+downside_deviation = np.sqrt((excess_returns.clip(upper=0) ** 2).mean()) * (tradingdays ** 0.5)
 annualized_excess_return = excess_returns.mean() * tradingdays
 
 sortino = annualized_excess_return / downside_deviation
@@ -709,19 +708,19 @@ The Calmar ratio depends heavily on whether a major crash falls within the measu
 
 ## Comparison Table
 
-| Metric                    | Accounts for Compounding | Risk-Adjusted | Time Horizon  | Best Used For                                    |
-| ------------------------- | ------------------------ | ------------- | ------------- | ------------------------------------------------ |
-| **Arithmetic Return**     | No                       | No            | Single period | Daily/monthly analysis, rolling means            |
-| **Logarithmic Return**    | Yes (time-additive)      | No            | Single period | Statistical modelling, time-series analysis      |
-| **Cumulative Return**     | Yes                      | No            | Full period   | Visualizing total growth over backtest           |
-| **CAGR**                  | Yes                      | No            | Multi-year    | Annualized benchmarking and comparison           |
-| **Annualized Returns**    | No (arithmetic) / Yes (geometric) | No | Any      | Normalizing returns for comparison, Sharpe numerator |
-| **Sharpe Ratio**          | No                       | Yes           | Any           | Risk-adjusted strategy comparison                |
-| **Annualized Volatility** | No                       | No            | Any           | Risk measurement, Sharpe denominator             |
-| **Kurtosis**              | No                       | No            | Any           | Tail-risk assessment, distribution analysis      |
-| **Skewness**              | No                       | No            | Any           | Asymmetry analysis, hidden crash-risk detection  |
-| **Drawdown**              | Yes                      | No            | Full period   | Worst-loss assessment, investor experience       |
-| **Sortino Ratio**         | No                       | Yes           | Any           | Risk-adjusted return, penalizes downside only    |
-| **Calmar Ratio**          | Yes                      | Yes           | Full period   | Return vs worst drawdown, crash-prone strategies |
+| Metric                    | Accounts for Compounding          | Risk-Adjusted | Time Horizon  | Best Used For                                        |
+| ------------------------- | --------------------------------- | ------------- | ------------- | ---------------------------------------------------- |
+| **Arithmetic Return**     | No                                | No            | Single period | Daily/monthly analysis, rolling means                |
+| **Logarithmic Return**    | Yes (time-additive)               | No            | Single period | Statistical modelling, time-series analysis          |
+| **Cumulative Return**     | Yes                               | No            | Full period   | Visualizing total growth over backtest               |
+| **CAGR**                  | Yes                               | No            | Multi-year    | Annualized benchmarking and comparison               |
+| **Annualized Returns**    | No (arithmetic) / Yes (geometric) | No            | Any           | Normalizing returns for comparison, Sharpe numerator |
+| **Sharpe Ratio**          | No                                | Yes           | Any           | Risk-adjusted strategy comparison                    |
+| **Annualized Volatility** | No                                | No            | Any           | Risk measurement, Sharpe denominator                 |
+| **Kurtosis**              | No                                | No            | Any           | Tail-risk assessment, distribution analysis          |
+| **Skewness**              | No                                | No            | Any           | Asymmetry analysis, hidden crash-risk detection      |
+| **Drawdown**              | Yes                               | No            | Full period   | Worst-loss assessment, investor experience           |
+| **Sortino Ratio**         | No                                | Yes           | Any           | Risk-adjusted return, penalizes downside only        |
+| **Calmar Ratio**          | Yes                               | Yes           | Full period   | Return vs worst drawdown, crash-prone strategies     |
 
 ---
