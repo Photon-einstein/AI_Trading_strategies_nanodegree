@@ -20,7 +20,7 @@
 
 > Who is the agent in this scenario?
 
-_(Your answer here)_
+The trading bot.
 
 ---
 
@@ -28,9 +28,9 @@ _(Your answer here)_
 
 > What information could be included in the state for the agent to make informed decisions? Describe the components of the state.
 
-1.
-2.
-3.
+1. The stock close price.
+2. The 20-day moving average of the closing price.
+3. The volume of the stocks being traded.
 
 ---
 
@@ -38,9 +38,9 @@ _(Your answer here)_
 
 > List the possible actions the agent can take in the environment.
 
-1.
-2.
-3.
+1. Buy more positions of that stock.
+2. Sell positions of that stock.
+3. Hold the positions of that stock.
 
 ---
 
@@ -48,6 +48,6 @@ _(Your answer here)_
 
 > Define the rewards that will guide the agent's behavior. Specify the rewards for each action.
 
-1.
-2.
-3.
+1. Buy stock - zero
+2. Hold stock - zero
+3. Sell stock - profit
