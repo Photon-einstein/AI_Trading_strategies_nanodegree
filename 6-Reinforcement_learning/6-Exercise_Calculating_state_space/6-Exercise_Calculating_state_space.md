@@ -1,6 +1,5 @@
 # Exercise 2: Calculating a State Space
 
-s
 This exercise is intended to help you understand the concept of state spaces in financial markets, by manually constructing a state space for given time steps using provided market data. Assume that all financial data and technical indicators are included as features of our state space. Assume all values can be rounded to integers for our state space representation.
 
 ---
@@ -26,20 +25,28 @@ This exercise is intended to help you understand the concept of state spaces in 
 
 Format: `[Close_t, Volume_t, SMA_t, RSI_t]`
 
-- **T=5:**
-- **T=6:**
-- **T=7:**
-- **T=8:**
-- **T=9:**
+- **T=5:** [106, 1100, 103.2, 80]
+- **T=6:** [107, 1400, 104.2, 78]
+- **T=7:** [108, 1800, 105.6, 89]
+- **T=8:** [105, 1500, 105.8, 56]
+- **T=9:** [110, 1400, 107.2, 77]
 
 ---
 
 ## 3. State Space Matrices for T=6 to T=9 (window size = 2)
 
 - **T=6:**
+  [[106, 1100, 103.2, 80]
+[107, 1400, 104.2, 78]]
 
 - **T=7:**
+  [[107, 1400, 104.2, 78]
+[108, 1800, 105.6, 89]]
 
 - **T=8:**
+  [[108, 1800, 105.6, 89]
+[105, 1500, 105.8, 56]]
 
 - **T=9:**
+  [[105, 1500, 105.8, 56]
+[110, 1400, 107.2, 77]]
