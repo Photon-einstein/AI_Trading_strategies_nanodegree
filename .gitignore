@@ -232,3 +232,6 @@ models/
 
 # Zip files
 *.zip
+
+# Models
+*.keras
