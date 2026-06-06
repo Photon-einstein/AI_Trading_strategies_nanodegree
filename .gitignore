@@ -229,3 +229,9 @@ models/
 
 # Conda
 .conda/
+
+# Zip files
+*.zip
+
+# Models
+*.keras
