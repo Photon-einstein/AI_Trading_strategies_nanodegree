@@ -4,7 +4,7 @@ from scipy.stats import norm
 S0 = 5
 mu = 0.3
 sigma = 0.25
-t = 1/12
+t = 1 / 12
 
 drift = (mu - 0.5 * sigma**2) * t
 std = sigma * np.sqrt(t)
@@ -32,4 +32,3 @@ print(f"\n50% confidence interval for S_t: [{S_lower:.4f}, {S_upper:.4f}]")
 direct_lower = S0 * np.exp(drift + std * norm.ppf(0.25))
 direct_upper = S0 * np.exp(drift + std * norm.ppf(0.75))
 print(f"Sanity check (direct percentiles): [{direct_lower:.4f}, {direct_upper:.4f}]")
-
