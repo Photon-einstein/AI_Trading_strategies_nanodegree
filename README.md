@@ -175,4 +175,4 @@ Implemented a momentum-based trading strategy on S&P 500 data using stochastic m
 
 ## Certificate of completion
 
-[Certificate of graduation](www.udacity.com/certificate/e/fb8d15d2-85bc-11f0-aab2-eb32a0c4c27d)
+[Certificate of graduation](https://www.udacity.com/certificate/e/fb8d15d2-85bc-11f0-aab2-eb32a0c4c27d)
